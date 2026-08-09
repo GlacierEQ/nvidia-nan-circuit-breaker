@@ -1,0 +1,28 @@
+{
+  "schema": "glaciereq.proof-receipt.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
+  "proof_id": "wave-a-residual-nvidia-nan-circuit-breaker-1786260727",
+  "environment": {
+    "python": "3.9.6"
+  },
+  "tests": [
+    "unittest discover -s tests -v (x2)"
+  ],
+  "adversarial_tests": [
+    "tests/test_adversarial.py"
+  ],
+  "runtime": {
+    "operate": "scripts/operate.py (x2)",
+    "dual_run_ok": true
+  },
+  "result": "PASS",
+  "limitations": [
+    "not production deployed",
+    "reference implementation only"
+  ],
+  "timestamp": "2026-08-09T07:32Z",
+  "artifact_hashes": {
+    "operability_receipt": "1ac744139a786592e51489f28e6cbb6c817cbd4d3605bee898f54a7bcd9c9101"
+  }
+}

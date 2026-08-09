@@ -1,0 +1,14 @@
+{
+  "schema": "glaciereq.operability-receipt.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "at": "2026-08-09T07:32Z",
+  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
+  "entry": "scripts/operate.py",
+  "primary_output": {
+    "ok": true,
+    "reset_allows": true,
+    "tripped": true
+  },
+  "dual_run_ok": true,
+  "result": "PASS"
+}

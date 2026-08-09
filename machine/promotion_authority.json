@@ -1,0 +1,10 @@
+{
+  "schema": "glaciereq.promotion-authority-grant.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
+  "proof_receipt_digest": "27ba03a52ad1271a801dab8433fdc4ee6aface011ad555a363e2594e265f16a4",
+  "not_after": 1786347127.216716,
+  "mac": "f3e70b689b8afdc281237564bedcc1062fa6f5cf46856a077ac47ae7ef6130a6",
+  "issuer": "local_operator_promotion_authority",
+  "verified": true
+}

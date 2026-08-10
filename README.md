@@ -1,7 +1,7 @@
 # NaN Circuit Breaker
 
 **Lens:** training stability (NVIDIA-class)  
-**Innovation:** Consecutive non-finite steps trip a breaker with cool-down; untrip requires explicit reset receipt.
+**Innovation:** Consecutive non-finite steps trip a latched breaker; protected steps remain blocked until an explicit valid reset.
 
 
 ## Claim ceiling (independent reference)

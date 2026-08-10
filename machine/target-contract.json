@@ -1,31 +1,42 @@
 {
   "schema": "glaciereq.repo-target-contract.v1",
-  "identity": {
-    "repository_id": "GlacierEQ/nvidia-nan-circuit-breaker",
-    "local_path": "/Users/kcbflux/job-app/repos/nvidia-nan-circuit-breaker"
-  },
+  "identity": {"repository_id": "GlacierEQ/nvidia-nan-circuit-breaker"},
   "current": {
-    "state": "VERTICAL_SLICE",
+    "principal_state": "PROMOTED",
     "implemented": true,
-    "tested": false,
+    "tested": true,
+    "adversarial_verified": true,
+    "operable": true,
+    "proof_receipt_bound": true,
+    "authority_bound": true,
     "deployed": false
   },
   "target": {
-    "purpose": "# ISSUE CONTRACT\n## Pain\nTraining continues after NaN storms.\n## Success\n- Trip after N consecutive non-finite\n- Cool-down blocks steps\n- Explicit reset\n",
-    "central_bottleneck": "see ISSUE_CONTRACT"
+    "purpose": "Stop training progression after sustained non-finite numerical failure instead of allowing NaN storms to propagate through subsequent steps.",
+    "central_bottleneck": "Training can continue consuming compute and corrupting state when non-finite values are observed but do not change execution authority.",
+    "success": [
+      "The breaker trips after the configured consecutive non-finite threshold.",
+      "Cool-down state blocks training steps while the breaker is active.",
+      "Reset is explicit rather than an implicit return to normal operation."
+    ]
   },
-  "invariants": [],
+  "invariants": [
+    "sustained non-finite input trips the breaker",
+    "active cool-down blocks protected steps",
+    "reset is explicit and observable"
+  ],
+  "donor_plan": {
+    "status": "RESOLVED",
+    "strategy": "INDEPENDENT_MECHANISM_PRESERVED",
+    "donors": [],
+    "basis": "The current repository owns the implemented NaN circuit-breaker mechanism; no donor implementation is required to define or operate it.",
+    "future_extraction": "Reusable non-finite circuit-breaker semantics may be extracted only with lineage, functional/proof equivalence, and preservation of this repository's identity."
+  },
   "promotion": {
-    "required_tests": [
-      "unit",
-      "adversarial"
-    ],
+    "required_tests": ["unit", "adversarial", "operability"],
     "require_exact_source_sha": true,
     "require_receipt": true,
     "require_nonclaims": true
   },
-  "nonclaims": [
-    "no employer affiliation",
-    "reference implementation only"
-  ]
+  "nonclaims": ["no NVIDIA affiliation", "reference training-safety engineering system, not a production NVIDIA training controller"]
 }

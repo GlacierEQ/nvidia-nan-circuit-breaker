@@ -1,1 +1,21 @@
-{"capabilities": ["hyper-scaling"]}
+{
+  "schema": "glaciereq.repo-capabilities.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "capability_family": "nonfinite_training_circuit_breaker",
+  "capabilities": [
+    "consecutive-nonfinite-trip-threshold",
+    "latched-open-execution-block",
+    "pretrip-finite-counter-reset",
+    "explicit-authorized-breaker-reset",
+    "malformed-reset-refusal"
+  ],
+  "evidence_refs": [
+    "src/nan_breaker.py",
+    "tests/test_nan_breaker.py",
+    "tests/test_adversarial.py",
+    "machine/target-contract.json",
+    "machine/proof_receipt.json",
+    "machine/canonical-position.json"
+  ],
+  "truth_boundary": "Repository-local non-finite training circuit-breaker mechanisms only. No NVIDIA adoption, production training-controller deployment, or exercised integration with the gradient-quorum sibling is implied."
+}

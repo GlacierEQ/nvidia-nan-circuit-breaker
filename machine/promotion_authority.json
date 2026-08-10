@@ -1,10 +1,11 @@
 {
   "schema": "glaciereq.promotion-authority-grant.v1",
   "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
-  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
-  "proof_receipt_digest": "7460048286abad50643c6cf592c3ba31e8ec2ce38424d6554f3e9d3c29581b3d",
-  "not_after": 1786347645.105215,
-  "mac": "0ad246ceaf7dd17fb596955ddaefd527d70797e864e4d672cc1f8d29ed03dc9a",
+  "source_sha": "d86c13585e24e17aee241a972ae62dda3f6004779fa45f2177242985a127faab",
+  "proof_receipt_digest": "eb14f2a07a5ae6d3e1056e21087d5ecc21bbb15c41481df194f5a631e52692eb",
+  "not_after": 1788927149.234226,
+  "mac": "765920f8c7709f860ba743595afba47de0350a27754da38d4fde734f862c926a",
   "issuer": "local_operator_promotion_authority",
-  "verified": true
+  "verified": true,
+  "secret_ref": "src/promotion_authority.py::LOCAL_OPERATOR_SECRET"
 }

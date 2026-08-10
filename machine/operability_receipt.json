@@ -1,15 +1,24 @@
 {
   "schema": "glaciereq.operability-receipt.v1",
   "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
-  "at": "2026-08-09T07:40Z",
-  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
+  "at": "2026-08-10T04:12Z",
+  "source_sha": "d86c13585e24e17aee241a972ae62dda3f6004779fa45f2177242985a127faab",
   "entry": "scripts/operate.py",
   "primary_output": {
+    "module": "nan_breaker",
     "ok": true,
-    "reset_allows": true,
-    "tripped": true
+    "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+    "smoke": {
+      "args": [],
+      "content_checked": true,
+      "invoked": true,
+      "kind": "class",
+      "method": "allow_step",
+      "module_local": true,
+      "name": "NanCircuitBreaker",
+      "result": true
+    }
   },
   "dual_run_ok": true,
-  "result": "PASS",
-  "scratch_launch_log": "wave_a/nvidia-nan-circuit-breaker/launch.log"
+  "result": "PASS"
 }

@@ -1,14 +1,15 @@
 {
   "schema": "glaciereq.proof-receipt.v1",
   "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
-  "source_sha": "ed62399fffc197cbfa0e0d7f5da0a92c4457be30b2112c41093848843cc15a7b",
-  "proof_id": "wave-a-residual-green-nvidia-nan-circuit-breaker-1786261245",
+  "source_sha": "d86c13585e24e17aee241a972ae62dda3f6004779fa45f2177242985a127faab",
+  "proof_id": "elite-nvidia-nan-circuit-breaker-1786335149",
   "environment": {
-    "python": "3.9.6",
-    "PYTHONPATH": "."
+    "python": "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python",
+    "PYTHONPATH": "/Users/kcbflux/job-app/repos/nvidia-nan-circuit-breaker:/Users/kcbflux/job-app/repos/nvidia-nan-circuit-breaker/src",
+    "entry": "unittest"
   },
   "tests": [
-    "PYTHONPATH=. python3 -m unittest discover -s tests -v (x2)"
+    "/Users/kcbflux/job-app/excellence/.venv-elite/bin/python -m unittest discover -s tests -v (x2)"
   ],
   "adversarial_tests": [
     "tests/test_adversarial.py"
@@ -23,9 +24,8 @@
     "not production deployed",
     "reference implementation only"
   ],
-  "timestamp": "2026-08-09T07:40Z",
+  "timestamp": "2026-08-10T04:12Z",
   "artifact_hashes": {
-    "operability_receipt": "bc6898d5c032f639d67c4fc9e8a7fc69dc9ad120a04fe95cf7bcadf1af7e7b46"
-  },
-  "scratch_proof_log": "wave_a/nvidia-nan-circuit-breaker/proof.log"
+    "operability_receipt": "e9c301f7d7bcc08df82a6dc3963e89a7a6bf54a580234cd4c822070eefb3847f"
+  }
 }

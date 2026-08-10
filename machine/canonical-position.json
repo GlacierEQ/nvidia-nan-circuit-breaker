@@ -6,17 +6,52 @@
   "company_target": "NVIDIA",
   "canonical_identity": "nan-circuit-breaker",
   "unique_value": [
-    "sustained non-finite training signals change execution authority instead of remaining a warning",
-    "active cool-down blocks protected training steps",
-    "recovery requires an explicit reset rather than silent return to normal"
+    "consecutive non-finite training signals change execution authority instead of remaining advisory telemetry",
+    "the latched OPEN breaker state blocks protected training steps until explicit reset",
+    "finite observations clear the pre-trip consecutive-failure counter, while an already OPEN breaker remains fail-closed",
+    "recovery requires explicit reset authority and malformed reset tokens are rejected"
   ],
+  "lineage_distinction": {
+    "GlacierEQ/nvidia-gradient-integrity-quorum": "owns distributed rank-level finite-gradient quorum admission and poison-rank isolation; complementary distributed integrity boundary, not temporal circuit breaking"
+  },
   "capability_contribution": {
     "family": "nonfinite_training_circuit_breaker",
-    "extractable_mechanisms": ["consecutive non-finite trip threshold", "cool-down execution block", "explicit breaker reset"],
-    "ownership": "This repository remains the owning NVIDIA-specialist implementation; extraction preserves identity and lineage."
+    "extractable_mechanisms": [
+      "consecutive non-finite trip threshold",
+      "latched-open execution block",
+      "pre-trip finite-signal counter reset",
+      "explicit authorized breaker reset",
+      "malformed reset refusal"
+    ],
+    "ownership": "This repository remains the owning NVIDIA-specialist implementation of a non-finite training circuit breaker; capability extraction preserves repository identity and lineage."
   },
-  "integration_policy": {"preserve_repository_identity":true,"preserve_lineage":true,"presentation_independent":true,"size_or_loc_not_dispositive":true,"absorption_requires_functional_equivalence":true,"absorption_requires_proof_equivalence":true},
-  "next_evolution": "Extend breaker authority across distributed workers, add quorum-aware trip aggregation, and verify bounded recovery after partial numerical failure.",
-  "evidence_refs": ["ISSUE_CONTRACT.md","machine/target-contract.json","machine/proof_receipt.json","machine/operability_receipt.json","machine/promotion_authority.json"],
-  "nonclaims": ["no NVIDIA affiliation", "not a production NVIDIA training controller"]
+  "integration_policy": {
+    "preserve_repository_identity": true,
+    "preserve_lineage": true,
+    "presentation_independent": true,
+    "size_or_loc_not_dispositive": true,
+    "absorption_requires_functional_equivalence": true,
+    "absorption_requires_proof_equivalence": true
+  },
+  "relationships": [
+    {"repository": "GlacierEQ/nvidia-gradient-integrity-quorum", "kind": "COMPLEMENTARY_DISTRIBUTED_INTEGRITY_COMPONENT", "integration_state": "NOT_CLAIMED"}
+  ],
+  "next_evolution": "Extend breaker authority across distributed workers, add quorum-aware trip aggregation, bind reset authority to explicit provenance, and verify bounded recovery after partial numerical failure while preserving latched fail-closed behavior.",
+  "evidence_refs": [
+    "README.md",
+    "ISSUE_CONTRACT.md",
+    "src/nan_breaker.py",
+    "tests/test_nan_breaker.py",
+    "tests/test_adversarial.py",
+    "machine/target-contract.json",
+    "machine/proof_receipt.json",
+    "machine/operability_receipt.json",
+    "machine/promotion_authority.json"
+  ],
+  "nonclaims": [
+    "no NVIDIA affiliation",
+    "no NVIDIA internal architecture claim",
+    "not a production NVIDIA training controller",
+    "repository relationships do not imply exercised integration"
+  ]
 }

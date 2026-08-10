@@ -1,9 +1,11 @@
 {
   "schema": "glaciereq.repo-target-contract.v1",
-<<<<<<< HEAD
-  "identity": {"repository_id": "GlacierEQ/nvidia-nan-circuit-breaker"},
+  "identity": {
+    "repository_id": "GlacierEQ/nvidia-nan-circuit-breaker",
+    "family": "elite-estate"
+  },
   "current": {
-    "principal_state": "PROMOTED",
+    "principal_state": "EVOLVING",
     "implemented": true,
     "tested": true,
     "adversarial_verified": true,
@@ -17,14 +19,15 @@
     "central_bottleneck": "Training can continue consuming compute and corrupting state when non-finite values are observed but do not change execution authority.",
     "success": [
       "The breaker trips after the configured consecutive non-finite threshold.",
-      "Cool-down state blocks training steps while the breaker is active.",
-      "Reset is explicit rather than an implicit return to normal operation."
+      "The latched OPEN state blocks protected training steps while the breaker is active.",
+      "Recovery requires an explicit valid reset rather than an implicit return to normal operation."
     ]
   },
   "invariants": [
     "sustained non-finite input trips the breaker",
-    "active cool-down blocks protected steps",
-    "reset is explicit and observable"
+    "OPEN breaker state blocks protected steps",
+    "finite observations reset the consecutive-failure counter before trip",
+    "reset is explicit and rejects malformed reset authority"
   ],
   "donor_plan": {
     "status": "RESOLVED",
@@ -34,31 +37,17 @@
     "future_extraction": "Reusable non-finite circuit-breaker semantics may be extracted only with lineage, functional/proof equivalence, and preservation of this repository's identity."
   },
   "promotion": {
-    "required_tests": ["unit", "adversarial", "operability"],
+    "required_tests": ["unit", "adversarial", "operability", "canonical_position_contract"],
     "require_exact_source_sha": true,
     "require_receipt": true,
     "require_nonclaims": true
   },
-  "nonclaims": ["no NVIDIA affiliation", "reference training-safety engineering system, not a production NVIDIA training controller"]
-=======
-  "identity": {
-    "repository_id": "GlacierEQ/nvidia-nan-circuit-breaker",
-    "family": "elite-estate"
-  },
-  "current": {
-    "state": "PROMOTED",
-    "implemented": true,
-    "tested": true,
-    "deployed": false
-  },
   "nonclaims": [
-    "no employer affiliation",
-    "no production deployment without receipt"
+    "no NVIDIA affiliation",
+    "reference training-safety engineering system, not a production NVIDIA training controller",
+    "no production deployment without independent receipt"
   ],
-  "donor_plan": {
-    "mode": "none",
-    "donors": []
-  },
-  "frozen_at": "2026-08-10T04:12Z"
->>>>>>> 416ec24 (chore: Hyper Excellence Activation & structural matrix alignment)
+  "frozen_at": "2026-08-10T04:12Z",
+  "reconciled_at": "2026-08-10T11:09Z",
+  "reconciliation_reason": "Removed unresolved merge-conflict markers and reconciled the stronger target contract with the implemented latched-open breaker semantics."
 }

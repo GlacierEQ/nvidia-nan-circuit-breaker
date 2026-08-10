@@ -1,0 +1,22 @@
+{
+  "schema": "glaciereq.repo-canonical-position.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "position_state": "RESOLVED",
+  "role": "company_specific_specialist_system",
+  "company_target": "NVIDIA",
+  "canonical_identity": "nan-circuit-breaker",
+  "unique_value": [
+    "sustained non-finite training signals change execution authority instead of remaining a warning",
+    "active cool-down blocks protected training steps",
+    "recovery requires an explicit reset rather than silent return to normal"
+  ],
+  "capability_contribution": {
+    "family": "nonfinite_training_circuit_breaker",
+    "extractable_mechanisms": ["consecutive non-finite trip threshold", "cool-down execution block", "explicit breaker reset"],
+    "ownership": "This repository remains the owning NVIDIA-specialist implementation; extraction preserves identity and lineage."
+  },
+  "integration_policy": {"preserve_repository_identity":true,"preserve_lineage":true,"presentation_independent":true,"size_or_loc_not_dispositive":true,"absorption_requires_functional_equivalence":true,"absorption_requires_proof_equivalence":true},
+  "next_evolution": "Extend breaker authority across distributed workers, add quorum-aware trip aggregation, and verify bounded recovery after partial numerical failure.",
+  "evidence_refs": ["ISSUE_CONTRACT.md","machine/target-contract.json","machine/proof_receipt.json","machine/operability_receipt.json","machine/promotion_authority.json"],
+  "nonclaims": ["no NVIDIA affiliation", "not a production NVIDIA training controller"]
+}

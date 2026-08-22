@@ -3,61 +3,69 @@
   "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
   "principal_state": "EVOLVING",
   "gates": {
-    "IDENTITY_RESOLVED": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "github GlacierEQ/nvidia-nan-circuit-breaker"},
-    "PROBLEM_VERIFIED": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "README/ISSUE_CONTRACT problem bound; reconciled to latched OPEN semantics"},
-    "TARGET_CONTRACT_FROZEN": {"status": "PASS", "at": "2026-08-10T11:09Z", "evidence": "machine/target-contract.json valid JSON; unresolved merge markers removed; target reconciled to implemented latched breaker"},
-    "DONOR_PLAN_RESOLVED": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "independent mechanism preserved; donor_reuse=none"},
-    "VERTICAL_SLICE_ALIVE": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "src mechanism + scripts/operate.py"},
-    "CENTRAL_MECHANISM_PRESENT": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "src/nan_breaker.py"},
-    "DETERMINISTIC_PROOF_GREEN": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "dual-run green tests"},
-    "ADVERSARIAL_SURVIVAL": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "tests/test_adversarial.py"},
-    "OPERABLE_AND_OBSERVABLE": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "scripts/operate.py dual-run PASS; primary ok"},
-    "PROOF_RECEIPT_BOUND": {"status": "PASS", "at": "2026-08-10T06:25Z", "evidence": "machine/proof_receipt.json bound"},
-    "PROMOTION_LOCKOUT_REMOVED": {"status": "PASS", "at": "2026-08-21T00:00Z", "evidence": "promotion-authority source, grant fixture, and key-gated verification retired; promotion state requires no secret-owned authority"},
-    "PROJECTION_TRUTH_CLOSED": {"status": "PASS", "at": "2026-08-10T11:09Z", "evidence": "README, ISSUE_CONTRACT, target contract, canonical position, and capability manifest now agree on latched OPEN behavior; no timed automatic cooldown is claimed"},
-    "CANONICAL_POSITION_RESOLVED": {"status": "PASS", "at": "2026-08-10T11:09Z", "evidence": "machine/canonical-position.json RESOLVED; nan-circuit-breaker owns temporal non-finite circuit breaking; gradient quorum is complementary and not claimed integrated"},
-    "EVOLUTION_CURSOR_DEFINED": {"status": "PASS", "at": "2026-08-10T11:09Z", "evidence": "next:distributed_quorum_trip_reset_provenance_bounded_recovery"},
-    "problem_verified": true,
-    "unique_value_known": true,
-    "canonical_identity_known": true,
-    "central_mechanism_implemented": true,
-    "deterministic_tests_pass": true,
-    "adversarial_tests_pass": true,
-    "runtime_behavior_observed": true,
-    "promotion_lockout_removed": true,
-    "proof_receipt_bound_to_sha": true,
-    "reusable_capabilities_extracted": true,
-    "projections_truth_consistent": true,
-    "evolution_cursor_defined": true
+    "IDENTITY_RESOLVED": {
+      "status": "PASS",
+      "evidence": "GlacierEQ/nvidia-nan-circuit-breaker"
+    },
+    "APEX_POSITION_ACTIVE": {
+      "status": "PASS",
+      "evidence": "machine/apex-position.json"
+    },
+    "LOCAL_BREAKER_PRESERVED": {
+      "status": "PASS",
+      "evidence": "src/nan_breaker.py + tests/test_nan_breaker.py"
+    },
+    "DISTRIBUTED_INTEGRITY_IMPLEMENTED": {
+      "status": "PASS",
+      "evidence": "src/training_integrity.py"
+    },
+    "RECOVERY_STATE_MACHINE_TESTED_LOCALLY": {
+      "status": "PASS",
+      "evidence": "tests/test_training_integrity.py; eight-test local execution before promotion"
+    },
+    "EXECUTABLE_RECEIPT_PATH_CONFIGURED": {
+      "status": "PASS",
+      "evidence": "scripts/integrity_probe.py + scripts/ci/verify_elite_core.sh"
+    },
+    "REPOSITORY_CI_MATRIX_CONFIGURED": {
+      "status": "PASS",
+      "evidence": ".github/workflows/tests.yml Python 3.11/3.12/3.13 plus native C proof"
+    },
+    "PRODUCTION_FRAMEWORK_INTEGRATION": {
+      "status": "NOT_CLAIMED",
+      "evidence": "no live CUDA/NCCL/production-cluster receipt"
+    },
+    "EVOLUTION_CURSOR_DEFINED": {
+      "status": "PASS",
+      "evidence": "next:optional-gradient-quorum-adapter+checkpoint-provenance+state-machine-fuzzing"
+    }
   },
-  "history": [
-    {"at": "2026-08-10T06:25Z", "from": "DISCOVERED", "to": "IDENTITY_RESOLVED", "gate": "IDENTITY_RESOLVED", "result": "PASS", "note": "github GlacierEQ/nvidia-nan-circuit-breaker"},
-    {"at": "2026-08-10T06:25Z", "from": "IDENTITY_RESOLVED", "to": "PROBLEM_VERIFIED", "gate": "PROBLEM_VERIFIED", "result": "PASS", "note": "README/ISSUE_CONTRACT problem bound"},
-    {"at": "2026-08-10T06:25Z", "from": "PROBLEM_VERIFIED", "to": "TARGET_CONTRACTED", "gate": "TARGET_CONTRACT_FROZEN", "result": "PASS", "note": "target contract existed; later reconciliation removes merge markers without weakening implemented semantics"},
-    {"at": "2026-08-10T06:25Z", "from": "TARGET_CONTRACTED", "to": "SEEDED", "gate": "DONOR_PLAN_RESOLVED", "result": "PASS", "note": "independent mechanism preserved"},
-    {"at": "2026-08-10T06:25Z", "from": "SEEDED", "to": "VERTICAL_SLICE", "gate": "VERTICAL_SLICE_ALIVE", "result": "PASS", "note": "src mechanism + scripts/operate.py"},
-    {"at": "2026-08-10T06:25Z", "from": "VERTICAL_SLICE", "to": "IMPLEMENTED", "gate": "CENTRAL_MECHANISM_PRESENT", "result": "PASS", "note": "src/nan_breaker.py"},
-    {"at": "2026-08-10T06:25Z", "from": "IMPLEMENTED", "to": "TESTED", "gate": "DETERMINISTIC_PROOF_GREEN", "result": "PASS", "note": "dual-run green tests"},
-    {"at": "2026-08-10T06:25Z", "from": "TESTED", "to": "ADVERSARIAL_VERIFIED", "gate": "ADVERSARIAL_SURVIVAL", "result": "PASS", "note": "tests/test_adversarial.py"},
-    {"at": "2026-08-10T06:25Z", "from": "ADVERSARIAL_VERIFIED", "to": "OPERABLE", "gate": "OPERABLE_AND_OBSERVABLE", "result": "PASS", "note": "scripts/operate.py dual-run PASS; primary ok"},
-    {"at": "2026-08-10T06:25Z", "from": "OPERABLE", "to": "PROOF_REPRODUCED", "gate": "PROOF_RECEIPT_BOUND", "result": "PASS", "note": "machine/proof_receipt.json bound"},
-    {"at": "2026-08-21T00:00Z", "from": "PROOF_REPRODUCED", "to": "PROMOTED", "gate": "PROMOTION_LOCKOUT_REMOVED", "result": "PASS", "note": "secret-owned promotion authority retired; promotion state is no longer key-gated"},
-    {"at": "2026-08-10T11:09Z", "from": "PROMOTED", "to": "CANONICAL", "gate": "CANONICAL_POSITION_RESOLVED", "result": "PASS", "note": "existing canonical-position authority reconciled to source: latched non-finite circuit breaker, distinct from distributed gradient quorum"},
-    {"at": "2026-08-10T11:09Z", "from": "CANONICAL", "to": "EVOLVING", "gate": "EVOLUTION_CURSOR_DEFINED", "result": "PASS", "note": "extend across workers with quorum-aware trips, reset provenance, and bounded recovery while preserving latched fail-closed behavior"}
-  ],
+  "capabilities_ref": "machine/capabilities.json",
+  "position_ref": "machine/apex-position.json",
   "contract_ref": "machine/target-contract.json",
   "scores_ref": "machine/excellence-scores.json",
-  "canonical_position_ref": "machine/canonical-position.json",
-  "capabilities_ref": "machine/capabilities.json",
-  "evolution_cursor": "next:distributed_quorum_trip_reset_provenance_bounded_recovery",
-  "wave": {
-    "id": "ELITE-ESTATE-2026-08-10",
-    "proof_ok": true,
-    "operable_ok": true,
-    "promoted_at": "2026-08-10T04:12Z",
-    "projection_truth_closed_at": "2026-08-10T11:09Z",
-    "canonical_position_resolved_at": "2026-08-10T11:09Z",
-    "policy": "glaciereq.repo-excellence.promotion-policy.v1"
-  },
+  "evolution_cursor": "next:optional-gradient-quorum-adapter+checkpoint-provenance+state-machine-fuzzing",
+  "history": [
+    {
+      "at": "2026-08-10T06:25:00Z",
+      "event": "local latched non-finite circuit breaker established"
+    },
+    {
+      "at": "2026-08-21T00:00:00Z",
+      "event": "secret-owned promotion lockout removed"
+    },
+    {
+      "at": "2026-08-22T10:48:00Z",
+      "event": "distributed worker integrity controller implemented and adversarially exercised"
+    },
+    {
+      "at": "2026-08-22T10:49:00Z",
+      "event": "receipt-producing recovery scenario and three-version repository CI path added"
+    },
+    {
+      "at": "2026-08-22T10:50:00Z",
+      "event": "frozen position model retired in favor of evolving APEX capability state"
+    }
+  ],
   "state": "EVOLVING"
 }

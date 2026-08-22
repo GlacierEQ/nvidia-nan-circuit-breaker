@@ -4,17 +4,28 @@
   "never_collapse": true,
   "axes": {
     "target_architecture": {
-      "grade": "B"
+      "grade": "A",
+      "basis": "distributed integrity + escalation + bounded recovery target"
     },
     "current_proof": {
-      "grade": "A"
+      "grade": "A",
+      "basis": "unit/adversarial surface + receipt-producing execution path; production integration remains unclaimed"
+    },
+    "failure_recovery": {
+      "grade": "A",
+      "basis": "quarantine, rollback, recovering, persistent-failure halt"
+    },
+    "observability": {
+      "grade": "A-",
+      "basis": "structured decisions, reasons, deterministic digests, content-hashed scenario receipt"
     },
     "company_fit": {
-      "score": 0.0
+      "score": 0.9,
+      "basis": "independent distributed-training numerical integrity exhibit"
     },
-    "canonical_confidence": {
-      "score": 0.0,
-      "role": "PROMOTED_LEAF"
+    "apex_coherence": {
+      "score": 1.0,
+      "role": "EVOLVING_SPECIALIST_LEAF"
     }
   }
 }

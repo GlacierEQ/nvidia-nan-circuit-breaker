@@ -11,43 +11,56 @@
     "adversarial_verified": true,
     "operable": true,
     "proof_receipt_bound": true,
-    "authority_bound": true,
     "deployed": false
   },
   "target": {
-    "purpose": "Stop training progression after sustained non-finite numerical failure instead of allowing NaN storms to propagate through subsequent steps.",
-    "central_bottleneck": "Training can continue consuming compute and corrupting state when non-finite values are observed but do not change execution authority.",
+    "purpose": "Detect, isolate, escalate, and recover from numerical-integrity failures across a distributed training step before corrupted state propagates.",
+    "central_bottleneck": "A local NaN latch is insufficient when a distributed training job can contain rank-local non-finite values, overflow, runaway gradients, stale workers, or lost healthy quorum.",
     "success": [
-      "The breaker trips after the configured consecutive non-finite threshold.",
-      "The latched OPEN state blocks protected training steps while the breaker is active.",
-      "Recovery requires an explicit valid reset rather than an implicit return to normal operation."
+      "Single-rank numerical faults are quarantined while healthy quorum survives.",
+      "Lost quorum or repeated incidents open the controller and require checkpoint rollback.",
+      "Persistent OPEN failure escalates to HALT rather than silently resuming.",
+      "Recovery requires an explicit bounded sequence of clean observations.",
+      "Every modeled recovery path can emit an inspectable content-hashed receipt.",
+      "The original latched non-finite breaker remains available as a focused local primitive."
     ]
   },
   "invariants": [
-    "sustained non-finite input trips the breaker",
-    "OPEN breaker state blocks protected steps",
-    "finite observations reset the consecutive-failure counter before trip",
-    "reset is explicit and rejects malformed reset authority"
+    "worker topology is complete and unique before a step can be evaluated",
+    "non-finite loss or gradients never count as healthy",
+    "lost healthy quorum cannot produce ALLOW",
+    "repeated incidents cannot remain indefinitely DEGRADED",
+    "OPEN state requires bounded clean recovery before returning CLOSED",
+    "persistent OPEN incidents escalate to HALT",
+    "receipt claims remain deterministic-model claims unless live framework evidence exists"
   ],
-  "donor_plan": {
-    "status": "RESOLVED",
-    "strategy": "INDEPENDENT_MECHANISM_PRESERVED",
-    "donors": [],
-    "basis": "The current repository owns the implemented NaN circuit-breaker mechanism; no donor implementation is required to define or operate it.",
-    "future_extraction": "Reusable non-finite circuit-breaker semantics may be extracted only with lineage, functional/proof equivalence, and preservation of this repository's identity."
+  "composition": {
+    "strategy": "PRESERVE_SPECIALISTS_AND_COMPOSE_BY_PROOF",
+    "siblings": [
+      "GlacierEQ/nvidia-gradient-integrity-quorum",
+      "GlacierEQ/nvidia-gpu-health",
+      "GlacierEQ/nvidia-deep-reasoning"
+    ],
+    "next": "optional gradient-quorum adapter plus checkpoint provenance without collapsing specialist repos"
   },
   "promotion": {
-    "required_tests": ["unit", "adversarial", "operability", "canonical_position_contract"],
-    "require_exact_source_sha": true,
+    "required_tests": [
+      "unit",
+      "adversarial",
+      "distributed_integrity_recovery",
+      "apex_position_contract",
+      "receipt_verification"
+    ],
     "require_receipt": true,
-    "require_nonclaims": true
+    "require_nonclaims": true,
+    "require_repository_owned_ci": true
   },
   "nonclaims": [
     "no NVIDIA affiliation",
-    "reference training-safety engineering system, not a production NVIDIA training controller",
-    "no production deployment without independent receipt"
+    "no CUDA or NCCL execution is claimed",
+    "no production distributed-training deployment is claimed",
+    "no measured model convergence improvement is claimed"
   ],
-  "frozen_at": "2026-08-10T04:12Z",
-  "reconciled_at": "2026-08-10T11:09Z",
-  "reconciliation_reason": "Removed unresolved merge-conflict markers and reconciled the stronger target contract with the implemented latched-open breaker semantics."
+  "last_expanded_at": "2026-08-22T00:49:00-10:00",
+  "expansion_reason": "Promoted the leaf from a local NaN latch into a proof-bound distributed training integrity and recovery controller while preserving the original primitive."
 }

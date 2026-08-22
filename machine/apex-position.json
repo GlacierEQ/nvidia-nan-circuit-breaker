@@ -1,0 +1,62 @@
+{
+  "schema": "glaciereq.apex-capability-position.v1",
+  "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
+  "identity": "distributed-training-integrity-controller",
+  "state": "EVOLVING",
+  "operator_direction": "maximum coherent advance with proof-bound promotion",
+  "implemented_surfaces": [
+    "src/nan_breaker.py",
+    "src/training_integrity.py",
+    "scripts/integrity_probe.py",
+    "scripts/ci/verify_elite_core.sh"
+  ],
+  "capabilities": [
+    "latched consecutive non-finite circuit breaking",
+    "distributed worker topology validation",
+    "healthy-quorum calculation",
+    "rank quarantine for non-finite loss or gradients",
+    "mixed-precision overflow quarantine",
+    "robust gradient outlier quarantine",
+    "stale-heartbeat quarantine",
+    "repeated-incident escalation",
+    "rollback decision on quorum loss or trip",
+    "bounded clean-step recovery sequence",
+    "persistent-open halt escalation",
+    "deterministic decision digests",
+    "receipt-producing recovery scenario"
+  ],
+  "relationships": [
+    {
+      "repository": "GlacierEQ/nvidia-gradient-integrity-quorum",
+      "relationship": "complementary sibling",
+      "integration_state": "NOT_REQUIRED_FOR_LOCAL_EXECUTION",
+      "next_composition": "federate gradient-integrity evidence without erasing either specialist"
+    },
+    {
+      "repository": "GlacierEQ/xai-colossus-cooling",
+      "relationship": "quality benchmark",
+      "borrowed_law": "real runtime + adversarial proof + recovery + executable receipts; no source-copy requirement"
+    }
+  ],
+  "proof": {
+    "unit_and_adversarial": "tests/",
+    "recovery_state_machine": "tests/test_training_integrity.py",
+    "executable_receipt": "scripts/integrity_probe.py",
+    "repository_gate": "scripts/ci/verify_elite_core.sh",
+    "ci": ".github/workflows/tests.yml"
+  },
+  "truth_boundary": [
+    "independent GlacierEQ portfolio engineering",
+    "no NVIDIA affiliation or endorsement",
+    "no live CUDA/NCCL integration is claimed",
+    "no production distributed-training deployment is claimed",
+    "no measured convergence or hardware-performance improvement is claimed"
+  ],
+  "next_capability_vector": [
+    "compose sibling gradient quorum as an optional adapter",
+    "add checkpoint provenance and rollback receipt verification",
+    "add property/state-machine fuzzing",
+    "add replayable multi-step incident traces",
+    "add live framework adapters only when executable dependencies and receipts exist"
+  ]
+}

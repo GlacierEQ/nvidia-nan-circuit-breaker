@@ -1,21 +1,35 @@
 {
   "schema": "glaciereq.repo-capabilities.v1",
   "repository": "GlacierEQ/nvidia-nan-circuit-breaker",
-  "capability_family": "nonfinite_training_circuit_breaker",
+  "capability_family": "distributed_training_integrity",
   "capabilities": [
     "consecutive-nonfinite-trip-threshold",
     "latched-open-execution-block",
-    "pretrip-finite-counter-reset",
-    "explicit-authorized-breaker-reset",
-    "malformed-reset-refusal"
+    "explicit-breaker-reset",
+    "distributed-worker-topology-validation",
+    "healthy-quorum-calculation",
+    "rank-quarantine",
+    "nonfinite-loss-detection",
+    "nonfinite-gradient-detection",
+    "mixed-precision-overflow-detection",
+    "robust-gradient-outlier-detection",
+    "stale-heartbeat-detection",
+    "repeated-incident-escalation",
+    "checkpoint-rollback-decision",
+    "bounded-clean-step-recovery",
+    "persistent-open-halt-escalation",
+    "deterministic-decision-digest",
+    "receipt-producing-recovery-scenario"
   ],
   "evidence_refs": [
     "src/nan_breaker.py",
+    "src/training_integrity.py",
     "tests/test_nan_breaker.py",
+    "tests/test_training_integrity.py",
     "tests/test_adversarial.py",
-    "machine/target-contract.json",
-    "machine/proof_receipt.json",
-    "machine/canonical-position.json"
+    "scripts/integrity_probe.py",
+    "scripts/ci/verify_elite_core.sh",
+    "machine/apex-position.json"
   ],
-  "truth_boundary": "Repository-local non-finite training circuit-breaker mechanisms only. No NVIDIA adoption, production training-controller deployment, or exercised integration with the gradient-quorum sibling is implied."
+  "truth_boundary": "Repository-local deterministic distributed-training integrity mechanisms. No NVIDIA adoption, CUDA/NCCL execution, production cluster deployment, or measured convergence improvement is implied."
 }
